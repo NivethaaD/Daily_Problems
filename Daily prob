@@ -1,0 +1,24 @@
+1. Calculate Digit Sum of a String
+
+class Solution:
+    def sumofDigits(self, group):
+      sum = 0
+      for digi in group:
+        sum = sum + (ord(digi) - ord('0'))
+
+      return str(sum)
+
+    def splitGroups(self, s, k):
+      while len(s) > k:
+        n = len(s)
+        ans = ""
+
+        for i in range(0, n, k):
+          group = s[i:i+k]
+          ans = ans + self.sumofDigits(group)
+        s = ans
+      return s
+      
+    def digitSum(self, s: str, k: int) -> str:
+        return self.splitGroups(s,k)
+
