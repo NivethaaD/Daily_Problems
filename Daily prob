@@ -22,3 +22,30 @@ class Solution:
     def digitSum(self, s: str, k: int) -> str:
         return self.splitGroups(s,k)
 
+2. Product of the Last K Numbers
+
+class ProductOfNumbers:
+
+    def __init__(self):
+        self.prefix = [1]
+
+    def add(self, num: int) -> None:
+        if num == 0:
+            self.prefix = [1]
+        else:
+            if len(self.prefix):
+                self.prefix.append(self.prefix[-1]*num)
+            else:
+                self.prefix.append(num)
+
+    def getProduct(self, k: int) -> int:
+        n = len(self.prefix)
+        if k >= n:
+            return 0
+        return self.prefix[n-1] // self.prefix[n-k-1]
+
+
+# Your ProductOfNumbers object will be instantiated and called as such:
+# obj = ProductOfNumbers()
+# obj.add(num)
+# param_2 = obj.getProduct(k)
