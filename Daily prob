@@ -44,6 +44,33 @@ class ProductOfNumbers:
             return 0
         return self.prefix[n-1] // self.prefix[n-k-1]
 
+3. Maximum Subarray With Equal Products
+
+import math
+
+class Solution:
+    def prodEquivalent(self, start, end, nums):
+        temp = nums[start:end+1]
+        prodVal = math.prod(temp)
+        gcdVal = math.gcd(*temp)
+        lcmVal = math.lcm(*temp)
+        if prodVal == lcmVal*gcdVal:
+            return True
+        
+        return False
+            
+
+    def maxLength(self, nums: List[int]) -> int:
+        maxi = 0
+
+        for i in range(0,len(nums)):
+            for j in range(i,len(nums)):
+                prodEqual = self.prodEquivalent(i,j,nums)
+                if prodEqual and len(nums[i:j+1]) > maxi:
+                    maxi = len(nums[i:j+1])
+
+        return maxi
+                
 
 # Your ProductOfNumbers object will be instantiated and called as such:
 # obj = ProductOfNumbers()
