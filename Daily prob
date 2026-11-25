@@ -76,3 +76,4 @@ class Solution:
 # obj = ProductOfNumbers()
 # obj.add(num)
 # param_2 = obj.getProduct(k)
+
